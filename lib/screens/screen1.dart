@@ -21,11 +21,11 @@ class Screen1 extends StatelessWidget {
         body: Column(
           children: [
             //header
-            header(),
+            header(context),
             checklist(),
 
             Container(
-                height: 390,
+                height: MediaQuery.of(context).size.height - 260,
                 child: ListView.builder(
                     itemCount: 10,
                     scrollDirection: Axis.vertical,
@@ -37,14 +37,18 @@ class Screen1 extends StatelessWidget {
         ));
   }
 
-  Widget header() {
+  Widget header(context) {
     return Container(
       height: 200,
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
+        color: greenBlockColor,
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30)),
         image: DecorationImage(
-          image: AssetImage("assets/bg.png"),
-          fit: BoxFit.fitWidth,
-        ),
+            image: AssetImage(
+              "assets/bg.png",
+            ),
+            fit: BoxFit.fitWidth),
       ),
       child: Column(
         children: [
@@ -78,11 +82,12 @@ class Screen1 extends StatelessWidget {
   Widget checklist() {
     return Container(
       // width: 100,
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.only(left: 20, right: 20, top: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Checkbox(
+              hoverColor: greyColor,
               value: checkboxValue,
               onChanged: (v) {
                 //  checkboxValue = v;
@@ -90,7 +95,7 @@ class Screen1 extends StatelessWidget {
           PopupMenuButton(
             child: Container(
               padding: EdgeInsets.all(10),
-              height: 48,
+              height: 40,
               width: 120,
               decoration: BoxDecoration(
                   color: whiteColor, borderRadius: BorderRadius.circular(10)),
@@ -117,14 +122,14 @@ class Screen1 extends StatelessWidget {
   Widget card(context) {
     return RoundedCard(
       width: MediaQuery.of(context).size.width,
-      height: 135,
+      height: 140,
       content: Container(
         padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
         child: Column(
           children: [
             Container(
               padding: EdgeInsets.only(
-                top: 5,
+                top: 12,
                 bottom: 5,
               ),
               child: Row(
@@ -234,13 +239,14 @@ class Screen1 extends StatelessWidget {
       child: card(context),
       secondaryActions: <Widget>[
         Container(
+          width: 200,
+
           //  margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
           child: Card(
             color: blueBlockColor,
             shape: RoundedRectangleBorder(
                 side: BorderSide.none, borderRadius: BorderRadius.circular(10)),
             child: Container(
-              width: 200,
               padding: EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -25,7 +25,7 @@ class _SearchBarState extends State<SearchBar> {
     return ResponsiveBuilder(
       builder: (context, sizingInfo) => Container(
         margin: EdgeInsets.only(left: 20, right: 20),
-        height: 48,
+        height: 40,
         width: sizingInfo.screenSize.width,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -49,6 +49,7 @@ class _SearchBarState extends State<SearchBar> {
           decoration: InputDecoration(
               hintText: "Search by order id or AWB no.",
               hintStyle: TextStyle(
+                
                 color: Color(
                   0xff79859a,
                 ),
@@ -58,10 +59,9 @@ class _SearchBarState extends State<SearchBar> {
               ),
               contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
               prefixIcon: Container(
-                padding: EdgeInsets.all(15),
+                padding: EdgeInsets.all(12),
                 child: Image.asset(
                   "assets/icons/search.png",
-                  width: 16,
                 ),
               ),
               border: OutlineInputBorder(
